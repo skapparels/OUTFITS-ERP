@@ -6,6 +6,11 @@ import { useOfflineStatus } from '../hooks/useOfflineStatus';
 const mock = [
   { sku: 'SKU-TSHIRT-BLK-M', variantId: 1, name: 'T-Shirt Black M', price: 799 },
   { sku: 'SKU-DENIM-BLU-32', variantId: 2, name: 'Denim Blue 32', price: 1899 }
+import React, { useState } from 'react';
+
+const mock = [
+  { sku: 'SKU-TSHIRT-BLK-M', name: 'T-Shirt Black M', price: 799 },
+  { sku: 'SKU-DENIM-BLU-32', name: 'Denim Blue 32', price: 1899 }
 ];
 
 export default function POSPage() {
@@ -66,6 +71,8 @@ export default function POSPage() {
       setSyncMessage('Sync failed. Please retry when connection is stable.');
     }
   };
+  const addItem = (item) => setCart((c) => [...c, item]);
+  const total = cart.reduce((s, i) => s + i.price, 0);
 
   return (
     <div className="grid md:grid-cols-2 gap-6">
@@ -75,6 +82,7 @@ export default function POSPage() {
           Status: {isOnline ? 'Online' : 'Offline'} | Pending offline bills: {pendingCount}
         </p>
 
+        <h2 className="text-xl font-semibold">POS Billing</h2>
         {mock.map((item) => (
           <button key={item.sku} className="block border rounded p-2 my-2 w-full text-left" onClick={() => addItem(item)}>
             {item.name} - ₹{item.price}
@@ -87,6 +95,7 @@ export default function POSPage() {
         </div>
       </div>
 
+      </div>
       <div>
         <h2 className="text-xl font-semibold">Cart</h2>
         <ul>{cart.map((item, i) => <li key={`${item.sku}-${i}`}>{item.name}</li>)}</ul>

@@ -82,6 +82,11 @@ class SalesController
             $total = collect($data['items'])->sum(fn ($i) => $i['quantity'] * $i['unit_price']);
             $sale = Sale::query()->create([
                 'offline_reference' => $data['offline_reference'] ?? null,
+        ]);
+
+        $sale = DB::transaction(function () use ($data) {
+            $total = collect($data['items'])->sum(fn ($i) => $i['quantity'] * $i['unit_price']);
+            $sale = Sale::query()->create([
                 'store_id' => $data['store_id'],
                 'customer_id' => $data['customer_id'] ?? null,
                 'payment_method' => $data['payment_method'],
@@ -96,5 +101,9 @@ class SalesController
 
             return $sale;
         });
+            return $sale;
+        });
+
+        return response()->json($sale->load('items'), 201);
     }
 }
