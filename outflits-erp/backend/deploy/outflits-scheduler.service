@@ -1,0 +1,13 @@
+[Unit]
+Description=OUTFLITS Laravel Scheduler
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+Restart=always
+ExecStart=/usr/bin/php /var/www/outflits-erp/outflits-erp/backend/artisan schedule:work
+WorkingDirectory=/var/www/outflits-erp/outflits-erp/backend
+
+[Install]
+WantedBy=multi-user.target

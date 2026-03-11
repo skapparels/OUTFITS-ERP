@@ -22,3 +22,7 @@ Production-oriented scaffold for a fashion retail ERP supporting stores, franchi
 - Supplier and purchase order foundations
 - Customer + loyalty foundations
 - HR, finance, and credit foundational schema
+
+
+## Linux production deployment
+Detailed VPS/hosting deployment steps are available in `docs/DEPLOYMENT_LINUX.md` including Nginx, PHP-FPM, Supervisor, systemd scheduler, SSL, and a deployment script.
