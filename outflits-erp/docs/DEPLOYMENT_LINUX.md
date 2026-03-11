@@ -158,3 +158,7 @@ If your host does not allow Supervisor/systemd:
 - use cron for `php artisan schedule:run` every minute
 - use hosting panel queue runner or fallback to `QUEUE_CONNECTION=sync` temporarily
 - point document root to `backend/public` for API and deploy `frontend/dist` as static files
+
+
+## GoDaddy Starter note
+If you are deploying on GoDaddy shared hosting, use the dedicated guide: `docs/DEPLOY_GODADDY_STARTER.md`.

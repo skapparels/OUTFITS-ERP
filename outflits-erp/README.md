@@ -27,3 +27,7 @@ Production-oriented scaffold for a fashion retail ERP supporting stores, franchi
 
 ## Linux production deployment
 Detailed VPS/hosting deployment steps are available in `docs/DEPLOYMENT_LINUX.md` including Nginx, PHP-FPM, Supervisor, systemd scheduler, SSL, and a deployment script.
+
+
+## GoDaddy Starter deployment
+For GoDaddy Web Hosting Starter (cPanel/shared hosting), follow `docs/DEPLOY_GODADDY_STARTER.md` and use `scripts/package_godaddy_starter.sh` to generate an upload-ready package.
