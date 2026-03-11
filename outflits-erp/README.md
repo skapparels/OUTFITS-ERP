@@ -19,6 +19,7 @@ Production-oriented scaffold for a fashion retail ERP supporting stores, franchi
 - Fashion model: collection/style/product/variant with statuses
 - Inventory control settings + AI recommendation workflow
 - POS sales API with payment mode support
+- Offline POS billing queue + sync API concept (`sales/offline-sync`)
 - Supplier and purchase order foundations
 - Customer + loyalty foundations
 - HR, finance, and credit foundational schema

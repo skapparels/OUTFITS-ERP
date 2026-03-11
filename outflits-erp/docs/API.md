@@ -20,6 +20,7 @@
 ## Sales / POS
 - `GET /api/v1/sales`
 - `POST /api/v1/sales`
+- `POST /api/v1/sales/offline-sync`
 - `GET /api/v1/sales/{id}`
 
 ## Customers
@@ -34,3 +35,12 @@
 ## Reports
 - `GET /api/v1/reports/pl`
 - `GET /api/v1/reports/sell-through`
+
+
+### Offline POS sync payload
+`POST /api/v1/sales/offline-sync` accepts: 
+- `sales[]` array
+- each sale includes `offline_reference`, `store_id`, `payment_method`, `sold_at`, and `items[]`
+- each item includes `product_variant_id`, `quantity`, `unit_price`
+
+Server returns `synced_count`, `duplicate_count`, and synced/duplicate references for idempotent local queue cleanup.

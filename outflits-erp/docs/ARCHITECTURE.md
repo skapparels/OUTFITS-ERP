@@ -13,3 +13,8 @@
   - POS / sales / returns
   - CRM / loyalty
   - HR / finance / credit
+
+- Offline POS concept:
+  - bills are queued locally in browser storage when internet/API is unavailable
+  - each queued bill carries `offline_reference` for idempotent replay
+  - sync API (`/sales/offline-sync`) imports queued bills once connectivity returns

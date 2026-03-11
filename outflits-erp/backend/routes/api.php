@@ -19,6 +19,7 @@ Route::prefix('v1')->group(function () {
         Route::get('inventory/recommendations', [InventoryController::class, 'recommendations']);
         Route::post('inventory/recommendations/{id}/review', [InventoryController::class, 'reviewRecommendation']);
         Route::apiResource('inventory', InventoryController::class)->only(['index', 'update']);
+        Route::post('sales/offline-sync', [SalesController::class, 'offlineSync']);
         Route::apiResource('sales', SalesController::class)->only(['index', 'store', 'show']);
         Route::apiResource('customers', CustomerController::class);
         Route::apiResource('suppliers', SupplierController::class);
