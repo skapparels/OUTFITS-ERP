@@ -1,0 +1,42 @@
+version: '3.9'
+services:
+  mysql:
+    image: mysql:8
+    environment:
+      MYSQL_DATABASE: outflits
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: outflits
+      MYSQL_PASSWORD: outflits
+    ports: ['3306:3306']
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  redis:
+    image: redis:7
+    ports: ['6379:6379']
+
+  backend:
+    image: php:8.3-fpm
+    working_dir: /var/www/backend
+    volumes:
+      - ../outflits-erp/backend:/var/www/backend
+    depends_on: [mysql, redis]
+
+  worker:
+    image: php:8.3-fpm
+    working_dir: /var/www/backend
+    command: php artisan queue:work
+    volumes:
+      - ../outflits-erp/backend:/var/www/backend
+    depends_on: [backend, redis]
+
+  frontend:
+    image: node:20
+    working_dir: /app
+    command: sh -c "npm install && npm run dev -- --host"
+    volumes:
+      - ../outflits-erp/frontend:/app
+    ports: ['5173:5173']
+
+volumes:
+  mysql_data:
