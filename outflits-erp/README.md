@@ -31,3 +31,7 @@ Detailed VPS/hosting deployment steps are available in `docs/DEPLOYMENT_LINUX.md
 
 ## GoDaddy Starter deployment
 For GoDaddy Web Hosting Starter (cPanel/shared hosting), follow `docs/DEPLOY_GODADDY_STARTER.md` and use `scripts/package_godaddy_starter.sh` to generate an upload-ready package.
+
+
+## Deploy now (GoDaddy)
+Use `docs/DEPLOY_NOW_GODADDY.md` for immediate step-by-step deployment and `scripts/deploy_godaddy_now.sh` for package upload automation.
